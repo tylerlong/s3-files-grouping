@@ -1,0 +1,33 @@
+{
+  "name": "s3-files-grouping",
+  "version": "0.1.0",
+  "description": "Group S3 files according to file extension",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "upgrade": "yarn-upgrade-all",
+    "build": "webpack --progress --colors",
+    "build:watch": "yarn build --watch",
+    "release": "yarn build -p",
+    "info": "cd grouping && serverless info",
+    "log": "cd grouping && serverless -f group logs",
+    "log:stream": "yarn log -t",
+    "remove": "cd grouping && serverless remove",
+    "deploy:full": "yarn build && cd grouping && serverless deploy",
+    "deploy:full:prod": "yarn release && cd grouping && serverless deploy --stage prod",
+    "deploy": "yarn deploy:full function -f group"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "serverless": "^1.25.0",
+    "standard": "^10.0.3",
+    "webpack": "^3.10.0",
+    "yarn-upgrade-all": "^0.3.0"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.183.0"
+  }
+}

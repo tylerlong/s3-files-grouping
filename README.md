@@ -2,7 +2,7 @@
 
 Group S3 files according to file extension
 
-
+This is a demo project created during a tech sharing session of RingCentral Xiamen integration team.
 
 
 ## Setup

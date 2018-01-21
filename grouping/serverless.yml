@@ -1,6 +1,7 @@
 service:
   name: s3-files-grouping-grouping
 provider:
+  stage: dev
   name: aws
   runtime: nodejs6.10
   region: us-east-1
@@ -11,7 +12,7 @@ provider:
     - Effect: "Allow"
       Action:
         - "s3:*"
-      Resource: "arn:aws:s3:::s3-files-grouping-demo-bucket/*"
+      Resource: "arn:aws:s3:::s3-files-grouping-demo-bucket-${self:provider.stage}/*"
 package:
   exclude:
     - '*.js'
@@ -24,7 +25,7 @@ functions:
     handler: handler.group
     events:
       - s3:
-          bucket: s3-files-grouping-demo-bucket
+          bucket: s3-files-grouping-demo-bucket-${self:provider.stage}
           event: s3:ObjectCreated:*
           rules:
             - prefix: upload/
